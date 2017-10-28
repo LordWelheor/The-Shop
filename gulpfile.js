@@ -2,16 +2,16 @@ const gulp = require('gulp');
 const less = require('gulp-less');
 const browserSync = require('browser-sync');
 const autoprefixer = require('gulp-autoprefixer');
-const rename       = require('gulp-rename');
-const ejs          = require('gulp-ejs');
-const gutil        = require('gulp-util');
+const rename = require('gulp-rename');
+const ejs = require('gulp-ejs');
+const gutil = require('gulp-util');
+const sourcemaps = require('gulp-sourcemaps');
 
 // Автоперезагрузка при изменении файлов в папке `dist`:
 // Принцип: меняем файлы в `/src`, они обрабатываются и переносятся в `dist` и срабатывает автоперезагрузка.
 // Это таск нужен только при локальной разработке.
 gulp.task('livereload', () => {
     browserSync.create();
-
     browserSync.init({
         server: {
             baseDir: 'dist'
@@ -22,10 +22,12 @@ gulp.task('livereload', () => {
     });
 });
 
-gulp.task('styles', () => {
+gulp.task("styles", () => {
     gulp.src('src/less/main.less')
+        .pipe(sourcemaps.init())
         .pipe(less())
         .pipe(autoprefixer())
+        .pipe(sourcemaps.write())
         .pipe(gulp.dest('./dist/css'));
 });
 
