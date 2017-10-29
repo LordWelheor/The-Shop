@@ -22,7 +22,7 @@ gulp.task('livereload', () => {
     });
 });
 
-gulp.task("styles", () => {
+gulp.task('styles', () => {
     gulp.src('src/less/main.less')
         .pipe(sourcemaps.init())
         .pipe(less())
