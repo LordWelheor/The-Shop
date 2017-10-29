@@ -57,7 +57,7 @@
             </ul>
         </nav>
 
-        <form class="search-form" action="./" method="get">
+        <form class="search-form" method="get">
             <input class="search-form__input" name="search" title="" maxlength="50">
             <button class="search-form__button" type="submit" title="Найти">
                 <svg class="search-form__img" version="1.1" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
@@ -90,71 +90,58 @@
 
         <div class="product">
             <div class="preview">
-                <img id="previewImg" class="preview__img" src="./img/tshirts/tshirt_white.jpg">
+                <img id="previewImg" class="preview__img" src="img/tshirt_white.jpg">
             </div>
             <div class="info">
                 <h1 class="info__name">Футболка Alien technology</h1>
                 <div class="info__description">
                     <p>Состав: 100% хлопок, динамическая типизация, польстая нотация. Производство: Россия.</p>
                 </div>
-
                 <div class="info__price">
-                    <span id="value" class="price__value">1500</span>
-                    <span id="currency" class="price__currency">₽</span>
+                    <span>1500 &#8381;</span>
                 </div>
 
                 <form id="productForm" class="product-form" method="get">
-                    <div class="radio-group">
-                        <span class="radio-group__title">Размер:</span>
-                        <% const size = ['S', 'M', 'L']; %>
-                        <ul id="sizeList" class="radio-group__list">
-                            <% size.forEach( (item, index)=> { %>
-                            <li class="radio-group__item <%= index == 0 ?  'radio-group__item_current' : ''%>">
-                                <label class="radio-group_label">
-                                    <div class="radio-group__div"><%= item %></div>
-                                    <% if (index == 0) { %>
-                                    <input class="radio-group__radio" type="radio" name="size" value=<%= item %> checked>
-                                    <% } else { %>
-                                    <input class="radio-group__radio" type="radio" name="size" value=<%= item %>>
-                                    <% } %>
-                                </label>
-                            </li>
-                            <% }); %>
-                        </ul>
+                    <div class="product-form__group-title">
+                        <p>Размер: <strong id="sizeName"></strong></p>
                     </div>
-                    <div class="radio-group">
-                        <span class="radio-group__title">Цвет:</span>
+                    <div class="product-form__group" id="changeSize">
+                        <% const size = ['S', 'M', 'L']; %>
+                        <% size.forEach( el => { %>
+                        <input type="radio" id="rad-<%= el %>" name="size"
+                               data-action="<%= el %>" value="<%= el %>" >
+                        <label id="lab-<%= el %>" for="rad-<%= el %>" class="product-form__btn" >
+                            <span><%= el %></span>
+                        </label>
+                        <% }); %>
+                    </div>
+
+                    <div class="product-form__group-title">
+                        <p>Цвет: <strong id="colorName"></strong></p>
+                    </div>
+                    <div class="product-form__group" id="changeColor">
                         <% const color = [
                             {name: 'white', value: '#fff'},
                             {name: 'yellow', value: '#e3d954'},
                             {name: 'green', value: '#a5ae96'}
-                            ]; %>
-                        <ul id="colorList" class="radio-group__list">
-                            <% color.forEach( (item, index) => { %>
-                            <li style="background-color: <%= item.value %>"
-                                class="radio-group__item <%= index == 0 ?  'radio-group__item_current' : ''%>">
-                                <label class="radio-group_label">
-                                    <div class="radio-group__div"></div>
-                                    <% if (index == 0) { %>
-                                    <input class="radio-group__radio" type="radio" name="color" value=<%= item.name %> checked>
-                                    <% } else { %>
-                                    <input class="radio-group__radio" type="radio" name="color" value=<%= item.name %>>
-                                    <% } %>
-                                </label>
-                            </li>
-                            <% }); %>
-                        </ul>
+                        ]; %>
+                        <% color.forEach( el => { %>
+                        <input type="radio" id="rad-<%= el.name %>" name="color"
+                               data-action="<%= el.name %>" value="<%= el.name %>" >
+                        <label id="lab-<%= el.name %>" for="rad-<%= el.name %>" class="product-form__btn"
+                        style="background-color: <%= el.value %>"> </label>
+                        <% }); %>
                     </div>
-
-                    <button id="buyButton" class="buy-button" type="submit">Купить</button>
-                    <br>
+                    <div id="orderBtn">
+                        <button type="submit" class="product-form__order-btn">Купить</button>
+                    </div>
                 </form>
 
-                <a class="favorite-button">
-                    <svg class="favorite-button__logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29.8 29.8">
+                <a class="favorite-btn">
+                    <svg class="favorite-btn__logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29.8 29.8">
                         <path d="M20.8,1.6a7.1,7.1,0,0,0-5.8,3,7.1,7.1,0,0,0-5.8-3A7.4,7.4,0,0,0,1.8,9C1.8,14.8,15,25.4,15,25.4S28.2,14.8,28.2,9A7.4,7.4,0,0,0,20.8,1.6Zm0,2.6A4.7,4.7,0,0,1,25.5,9c0,2.6-5.2,8.5-10.6,12.9C9.6,17.3,4.4,11.5,4.4,9A4.7,4.7,0,0,1,9.2,4.2c3.2,0,5.8,4,5.8,4s2.5-4,5.8-4"></path>
                     </svg>
-                    <span class="favorite-button__text">Отложить на потом</span>
+                    <span class="favorite-btn__text">Отложить на потом</span>
                 </a>
             </div>
         </div>
