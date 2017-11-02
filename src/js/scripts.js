@@ -19,7 +19,7 @@ productForm.addEventListener('click', function (elem) {
 
     color.forEach( el => {
         if (action === el.nameEng) {
-            previewImg.src = 'img/tshirt_' + el.nameEng + '.jpg';
+            previewImg.src = 'img/tshirts/tshirt_' + el.nameEng + '.jpg';
             colorName.innerHTML = el.nameRu;
         }
     });

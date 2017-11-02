@@ -36,10 +36,10 @@ body {
 // TODO Header
 
 .header {
-    height: @header-height;
     background-color: @background-color-primary;
-    @media @phone-strict {
-        height: @header-height / 2;
+    height: @header-height / 2;
+    @media @tablet {
+        height: @header-height;
     }
 
     &__container {
@@ -58,7 +58,7 @@ body {
         width: 215px;
     }
 
-    &__img {
+    &__link > svg{
         width: 100px;
         fill: @color-primary;
 
@@ -71,24 +71,39 @@ body {
 
 .logo-oggetto {
     margin: auto;
-    height: @header-height / 2 + 10px;
-    width: @header-height / 2 + 10px;
-    @media @phone-strict {
-        height: @header-height / 2 - 10px;
-        width: @header-height / 2 - 10px;
+    height: @header-height / 2 - 10px;
+    width: @header-height / 2 - 10px;
+    @media @tablet {
+        height: @header-height / 2 + 10px;
+        width: @header-height / 2 + 10px;
     }
 
-    &__img {
+    &__link > svg{
         fill: @color-primary;
 
         &:hover {
             transition-duration: 1s;
             fill: @color-hover;
         }
+        // TODO цвет от размера
+        @media @phone {
+            fill: orange;
+        }
+        @media @tablet {
+            fill: yellow;
+        }
+        @media @desktop {
+            fill: green;
+        }
+        @media @large {
+            fill: blue;
+        }
     }
 }
 
 .phone {
+    text-decoration: none;
+    white-space: nowrap;
     width: 126px;
     font-weight: bold;
     font-size: 14px;
@@ -176,9 +191,11 @@ body {
         }
     }
 
-    &__img {
-        outline: none;
+    &__button > svg{
+        cursor: pointer;
         fill: @color-border;
+        width: @menu-height - 12px;
+        height: @menu-height - 12px;
 
         &:hover {
             transition-duration: 1s;
@@ -316,6 +333,7 @@ body {
     }
 
     &__order-btn {
+        cursor: pointer;
         height: 64px;
         width: 165px;
         font-size: 22px;
@@ -326,7 +344,7 @@ body {
         border: 0;
         box-shadow: 0 0 2px @color-primary;
         margin-top: 32px;
-        margin-bottom: 32px;
+        margin-bottom: 10px;
 
         &:hover {
             transition-duration: 1s;
@@ -338,20 +356,21 @@ body {
 .favorite-btn {
     display: inline-flex;
 
-    &__logo {
+    svg {
         height: 24px;
         width: 24px;
         fill: @color-favorite-block;
     }
 
     &__text {
+        padding-left: 5px;
         text-align: center;
         line-height: 24px;
         color: @color-favorite-block;
     }
 
     &:hover {
-        .favorite-btn__logo {
+        svg {
             fill: @color-hover;
             transition-duration: 1s;
         }
@@ -370,6 +389,7 @@ body {
 
     &__container {
         .container;
+        padding-top: 59px;
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
@@ -379,23 +399,6 @@ body {
     &__title {
         font-weight: bold;
         font-size: 16px;
-    }
-
-    &__list {
-        list-style: none;
-    }
-
-    &__item {
-        line-height: 24px;
-    }
-
-    &__link {
-        text-decoration: none;
-        color: #000;
-
-        &:hover {
-            color: @color-hover;
-        }
     }
 
     &__line {
@@ -414,7 +417,6 @@ body {
 
 .support {
     font-size: 14px;
-    padding-top: 59px;
 
     &__part1 {
         vertical-align: top;
@@ -432,8 +434,6 @@ body {
 
 .about {
     font-size: 14px;
-    padding-right: 16px;
-    padding-top: 59px;
 
     &__part1 {
         vertical-align: top;
@@ -449,12 +449,27 @@ body {
     }
 }
 
+.list-links {
+    list-style: none;
+
+    &__item {
+        line-height: 24px;
+    }
+
+    &__link {
+        text-decoration: none;
+        color: #000;
+
+        &:hover {
+            color: @color-hover;
+        }
+    }
+}
+
 .services {
     font-size: 14px;
     color: black;
     display: inline-block;
-    padding-right: 16px;
-    padding-top: 59px;
     flex-shrink: 0;
 
     &__list {
@@ -479,20 +494,19 @@ body {
 
     &__container-img {
         display: inline-block;
-        width: 48px;
+        width: 40px;
         vertical-align: middle;
-        padding-right: 10px;
-    }
+        padding-right: 5px;
 
-    &__img {
-        float: right;
-        height: 24px;
+        svg {
+            float: right;
+            height: 20px;
+        }
     }
 }
 
 .social {
     display: inline-block;
-    padding-top: 59px;
 
     &__list {
         list-style: none;
@@ -502,12 +516,12 @@ body {
         padding-bottom: 16px;
     }
 
-    &__link:hover {
-        fill: @color-hover;
-    }
-
-    &__img {
+    &__link > svg {
         height: 24px;
         width: 24px;
+
+        &:hover {
+            fill: @color-hover;
+        }
     }
 }
