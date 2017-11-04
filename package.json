@@ -4,7 +4,6 @@
   "description": "Simple project template with LESS, Autoprefixer and livereload.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "set NODE_ENV=development&& gulp",
     "dev": "gulp",
     "prod": "gulp prod",
