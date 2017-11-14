@@ -7,10 +7,9 @@
     <title>7h3 5h0p</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel='stylesheet'>
     <link rel="stylesheet" href="css/main.css">
-    <script src="js/scripts.js" defer></script>
+    <script type="module" src="js/scripts.js" defer></script>
 </head>
-<body>
-
+<body id="doc">
 <header class="header">
     <div class="header__container">
         <div class="logo-shop">
@@ -23,9 +22,7 @@
                 <%- include('img/icons/oggetto_logo.svg'); %>
             </a>
         </div>
-        <div class="phone">
-            <a class="phone__link" href="tel:+78122128506">+7 (812) 2•12•85•06</a>
-        </div>
+        <a class="phone" href="tel:+78122128506">+7 (812) 2•12•85•06</a>
     </div>
 </header>
 
@@ -75,26 +72,29 @@
         </div>
 
         <div class="product">
-            <div class="preview">
-                <img id="previewImg" class="preview__img" src="img/tshirts/tshirt_white.jpg" alt="Футболка">
+            <div class="product-picture">
+                <img id="productPicture" class="product-picture__img" src="img/tshirts/tshirt_white.jpg"
+                     alt=<%= nameProduct %>>
             </div>
             <div class="info">
-                <h1 class="info__name">Футболка Alien technology</h1>
+                <h1 class="info__name"><%= nameProduct %></h1>
                 <div class="info__description">
                     <p>Состав: 100% хлопок, динамическая типизация, польстая нотация. Производство: Россия.</p>
                 </div>
-                <div class="info__price">
-                    <span>1500 &#8381;</span>
+                <div class="price">
+                    <span id="priceVal" class="price__val">1500</span>
+                    <span class="price__currency">₽</span>
                 </div>
 
                 <form id="productForm" class="product-form" method="get">
                     <div class="product-form__group-title">
                         <p>Размер: <strong id="sizeName"></strong></p>
                     </div>
-                    <div class="product-form__group" id="changeSize">
+                    <div id="sizeList" class="product-form__group">
                         <% size.forEach( el => { %>
                         <input type="radio" id="rad-<%= el %>" name="size"
-                               data-action="<%= el %>" value="<%= el %>">
+                               data-type="size" data-value="<%= el %>"
+                               value="<%= el %>">
                         <label id="lab-<%= el %>" for="rad-<%= el %>" class="product-form__btn">
                             <span><%= el %></span>
                         </label>
@@ -104,10 +104,11 @@
                     <div class="product-form__group-title">
                         <p>Цвет: <strong id="colorName"></strong></p>
                     </div>
-                    <div class="product-form__group" id="changeColor">
+                    <div id="colorList" class="product-form__group">
                         <% color.forEach( el => { %>
                         <input type="radio" id="rad-<%= el.name %>" name="color"
-                               data-action="<%= el.name %>" value="<%= el.name %>">
+                               data-type="color" data-value=<%= el.name %>
+                               value="<%= el.name %>">
                         <label id="lab-<%= el.name %>" for="rad-<%= el.name %>" class="product-form__btn"
                                style="background-color: <%= el.value %>"> </label>
                         <% }); %>

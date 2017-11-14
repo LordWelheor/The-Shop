@@ -1,6 +1,7 @@
 module.exports = {
     nav: ['LISP', 'OCaml', 'JavaScript', 'Python', 'PHP'],
     breadcrumbs: ['LISP', 'Одежда', 'Футболки'],
+    nameProduct: 'Футболка Alien technology',
     size: ['S', 'M', 'L'],
     color: [
         {name: 'white', value: '#fff'},

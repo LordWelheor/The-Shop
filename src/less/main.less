@@ -11,6 +11,11 @@
 @color-border: #d7d8d2;
 @color-border-hover: #4f4f4f;
 
+@width-container: 1200px;
+@size-logo-shop: 100px;
+@size-logo-oggetto: 35px;
+@size-header-element-min: 126px;
+@size-header-element-max: 215px;
 @header-height: 87px;
 @menu-height: 49px;
 @list-button-size: 63px;
@@ -27,9 +32,17 @@ body {
 
 .container() {
     margin: auto;
+    padding-left: 5px;
+    padding-right: 5px;
+    max-width: @width-container;
 
+    @media @tablet {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
     @media @large {
-        width: @md-max;
+        padding-left: 0;
+        padding-right: 0;
     }
 }
 
@@ -37,9 +50,9 @@ body {
 
 .header {
     background-color: @background-color-primary;
-    height: @header-height / 2;
+    height: @size-logo-oggetto + 10;
     @media @tablet {
-        height: @header-height;
+        height: @size-logo-oggetto + 35;
     }
 
     &__container {
@@ -52,14 +65,17 @@ body {
 }
 
 .logo-shop {
-    width: 126px;
+    width: @size-header-element-min;
 
     @media @tablet {
-        width: 215px;
+        width: @size-header-element-max;
     }
 
     &__link > svg{
-        width: 100px;
+        width: @size-logo-shop - 25;
+        @media @tablet {
+            width: @size-logo-shop;
+        }
         fill: @color-primary;
 
         &:hover {
@@ -71,11 +87,11 @@ body {
 
 .logo-oggetto {
     margin: auto;
-    height: @header-height / 2 - 10px;
-    width: @header-height / 2 - 10px;
+    height: @size-logo-oggetto;
+    width: @size-logo-oggetto;
     @media @tablet {
-        height: @header-height / 2 + 10px;
-        width: @header-height / 2 + 10px;
+        height: @size-logo-oggetto + 15;
+        width: @size-logo-oggetto + 15;
     }
 
     &__link > svg{
@@ -102,23 +118,20 @@ body {
 }
 
 .phone {
-    white-space: nowrap;
-    width: 126px;
-    font-weight: bold;
     font-size: 14px;
+    width: @size-header-element-min;
     @media @tablet {
         font-size: 24px;
-        width: 215px;
+        width: @size-header-element-max;
     }
+    white-space: nowrap;
+    font-weight: bold;
+    text-decoration: none;
+    color: @color-primary;
 
-    &__link {
-        text-decoration: none;
-        color: @color-primary;
-
-        &:hover {
-            transition-duration: 1s;
-            color: @color-hover;
-        }
+    &:hover {
+        transition-duration: 1s;
+        color: @color-hover;
     }
 }
 
@@ -146,7 +159,7 @@ body {
 
     &__item {
         display: inline-block;
-        margin-right: 10px;
+        margin-right: 5px;
     }
 
     &__link {
@@ -256,7 +269,7 @@ body {
     }
 }
 
-.preview {
+.product-picture {
     &__img {
         max-width: 100%;
     }
@@ -276,12 +289,6 @@ body {
         font-size: 14px;
     }
 
-    &__price {
-        margin-top: 32px;
-        font-size: 32px;
-        font-weight: bold;
-        color: @color-secondary
-    }
     @media @phone-strict {
         margin-left: 4px;
         margin-right: 4px;
@@ -296,6 +303,16 @@ body {
         padding-left: 32px;
         padding-bottom: 32px;
         width: 50%;
+    }
+}
+
+.price {
+    margin-top: 32px;
+    font-size: 32px;
+    color: @color-secondary;
+
+    &__val {
+        font-weight: bold;
     }
 }
 
