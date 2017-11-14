@@ -9,7 +9,7 @@ const sourcemaps    = require('gulp-sourcemaps');
 const include       = require('gulp-include');
 const imagemin      = require('gulp-imagemin');
 const gulpIf        = require('gulp-if');
-const data          = require('./src/data');
+const data          = require('./src/js/data');
 
 const env = process.env.NODE_ENV;
 const isDevelopment = !env || env === 'development';
