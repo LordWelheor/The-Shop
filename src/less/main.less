@@ -418,20 +418,25 @@ body {
 
     &__container {
         .container;
+        font-size: 14px;
         padding-top: 59px;
+        padding-left: 0;
+        padding-right: 0;
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-between;
-        align-content: flex-start;
+        justify-content: space-around;
+        @media @tablet {
+            justify-content: space-between;
+        }
     }
 
     &__about-site {
         border-top: 1px inset @color-border;
         width: 100%;
         padding-top: 32px;
+        padding-left: 5px;
         margin-top: 10px;
         margin-bottom: 32px;
-        font-size: 14px;
         line-height: 24px;
     }
 }
@@ -451,13 +456,17 @@ body {
 
     &__part1 {
         vertical-align: top;
-        display: inline-block;
         padding-right: 32px;
+        @media @desktop {
+            display: inline-block;
+        }
     }
 
     &__part2 {
         vertical-align: top;
-        display: inline-block;
+        @media @desktop {
+            display: inline-block;
+        }
     }
 }
 
@@ -516,10 +525,20 @@ body {
 }
 
 .social {
-    display: inline-block;
+    width: 100%;
+    padding-top: 16px;
+    @media @tablet {
+        width: auto;
+        padding-top: 0;
+    }
 
     &__list {
         list-style: none;
+        display: flex;
+        justify-content: space-around;
+        @media @tablet {
+            display: block;
+        }
     }
 
     &__item {
@@ -527,8 +546,12 @@ body {
     }
 
     &__link > svg {
-        height: 24px;
-        width: 24px;
+        height: 35px;
+        width: 35px;
+        @media @tablet {
+            height: 24px;
+            width: 24px;
+        }
 
         &:hover {
             fill: @color-hover;
