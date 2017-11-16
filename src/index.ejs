@@ -128,24 +128,24 @@
 
 <footer class="footer">
     <div class="footer__container">
-        <div class="support">
-            <span class="footer__title">Сервис и поддержка</span>
-            <div class="support__parts">
-                <div class="support__part1">
-                    <ul class="list-links">
+        <div class="group">
+            <span class="group__title">Сервис и поддержка</span>
+            <div class="group__parts">
+                <div class="group__part1">
+                    <ul class="group-links">
                         <% for (let i = 0; i < 4; i++) { %>
-                        <li class="list-links__item">
-                            <a class="list-links__link" href="#"><%= support[i] %></a>
+                        <li class="group-links__item">
+                            <a class="group-links__link" href="#"><%= support[i] %></a>
                         </li>
                         <% } %>
                     </ul>
                 </div>
 
-                <div class="support__part2">
-                    <ul class="list-links">
+                <div class="group__part2">
+                    <ul class="group-links">
                         <% for (let i = 4; i < support.length; i++) { %>
-                        <li class="list-links__item">
-                            <a class="list-links__link" href="#"><%= support[i] %></a>
+                        <li class="group-links__item">
+                            <a class="group-links__link" href="#"><%= support[i] %></a>
                         </li>
                         <% } %>
                     </ul>
@@ -153,24 +153,24 @@
             </div>
         </div>
 
-        <div class="about">
-            <span class="footer__title">О компании</span>
-            <div class="about__parts">
-                <div class="about__part1">
-                    <ul class="list-links">
+        <div class="group">
+            <span class="group__title">О компании</span>
+            <div class="group__parts">
+                <div class="group__part1">
+                    <ul class="group-links">
                         <% for (let i = 0; i < 4; i++) { %>
-                        <li class="list-links__item">
-                            <a class="list-links__link" href="#"><%= about[i] %></a>
+                        <li class="group-links__item">
+                            <a class="group-links__link" href="#"><%= about[i] %></a>
                         </li>
                         <% } %>
                     </ul>
                 </div>
 
-                <div class="about__part2">
-                    <ul class="list-links">
+                <div class="group__part2">
+                    <ul class="group-links">
                         <% for (let i = 4; i < about.length; i++) { %>
-                        <li class="list-links__item">
-                            <a class="list-links__link" href="#"><%= about[i] %></a>
+                        <li class="group-links__item">
+                            <a class="group-links__link" href="#"><%= about[i] %></a>
                         </li>
                         <% } %>
                     </ul>
@@ -204,8 +204,6 @@
                 <% }); %>
             </ul>
         </div>
-
-        <hr class="footer__line">
 
         <p class="footer__about-site">
             2005-2017 © 7h35h0p.ru - модный интернет магазин одежды, обуви и аксессуаров.<br>
