@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0, width=device-width">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>7h3 5h0p</title>
+    <link rel="shortcut icon" href="./img/icons/oggetto_logo.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel='stylesheet'>
+    <link rel="stylesheet" href="css/main.css">
+    <script type="module" src="js/scripts.js" defer></script>
+</head>
+<body id="doc">
+<header class="header">
+    <div class="header__container">
+        <div class="logo-shop">
+            <a class="logo-shop__link" href="#">
+                <!--= include 'img/icons/the_shop_logo.svg' -->
+            </a>
+        </div>
+        <div class="logo-oggetto">
+            <a class="logo-oggetto__link" href="//oggettoweb.com">
+                <%- include('img/icons/oggetto_logo.svg'); %>
+            </a>
+        </div>
+        <a class="phone" href="tel:+78122128506">+7 (812) 2•12•85•06</a>
+    </div>
+</header>
+
+<div class="menu">
+    <div class="menu__container">
+        <nav class="nav">
+            <ul class="nav__list">
+                <% const current = 0; %>
+                <% nav.forEach((item, index) => { %>
+                <li class="nav__item">
+                    <% if (current == index) { %>
+                    <a class="nav__link nav__link_current"><%= item %></a>
+                    <% } else { %>
+                    <a class="nav__link" href="#"><%= item %></a>
+                    <% } %>
+                </li>
+                <% }); %>
+            </ul>
+        </nav>
+
+        <form class="search-form" method="get">
+            <input class="search-form__input" name="search" title="" maxlength="50">
+            <button class="search-form__button" type="submit" title="Найти">
+                <%- include('img/icons/search.svg'); %>
+            </button>
+        </form>
+    </div>
+</div>
+
+<main class="main">
+    <div class="main__container">
+        <div class="breadcrumbs">
+            <ul class="breadcrumbs__list">
+                <% breadcrumbs.forEach(function(crumb, index) { %>
+                <li class="breadcrumbs__item">
+                    <% if(index == breadcrumbs.length - 1) { %>
+                    <a class="breadcrumbs__link breadcrumbs__link_current"><%= crumb; %></a>
+                    <% } else { %>
+                    <a href="#" class="breadcrumbs__link"><%= crumb; %></a>
+                    <% } %>
+                    <% if(index < (breadcrumbs.length - 1)) { %>
+                    <span class="breadcrumb__separator">/</span>
+                    <% } %>
+                </li>
+                <% }); %>
+            </ul>
+        </div>
+
+        <div class="product">
+            <div class="product-picture">
+                <img id="productPicture" class="product-picture__img" src="img/tshirts/tshirt_white.jpg"
+                     alt="<%= nameProduct %>">
+            </div>
+            <div class="info">
+                <h1 class="info__name"><%= nameProduct %></h1>
+                <div class="info__description">
+                    <p>Состав: 100% хлопок, динамическая типизация, польстая нотация. Производство: Россия.</p>
+                </div>
+                <div class="price">
+                    <span id="priceVal" class="price__val">1500</span>
+                    <span class="price__currency">₽</span>
+                </div>
+
+                <form id="productForm" class="product-form" method="get">
+                    <div class="product-form__group-title">
+                        <p>Размер: <strong id="sizeName"></strong></p>
+                    </div>
+                    <div id="sizeList" class="product-form__group">
+                        <% size.forEach( el => { %>
+                        <input type="radio" id="rad-<%= el %>" name="size"
+                               data-type="size" data-value="<%= el %>"
+                               value="<%= el %>">
+                        <label id="lab-<%= el %>" for="rad-<%= el %>" class="product-form__btn">
+                            <span><%= el %></span>
+                        </label>
+                        <% }); %>
+                    </div>
+
+                    <div class="product-form__group-title">
+                        <p>Цвет: <strong id="colorName"></strong></p>
+                    </div>
+                    <div id="colorList" class="product-form__group">
+                        <% color.forEach( el => { %>
+                        <input type="radio" id="rad-<%= el.name %>" name="color"
+                               data-type="color" data-value=<%= el.name %>
+                               value="<%= el.name %>">
+                        <label id="lab-<%= el.name %>" for="rad-<%= el.name %>" class="product-form__btn"
+                               style="background-color: <%= el.value %>"> </label>
+                        <% }); %>
+                    </div>
+                    <button type="submit" class="product-form__order-btn">Купить</button>
+                </form>
+
+                <a class="favorite-btn">
+                    <%- include('img/icons/heart.svg'); %>
+                    <span class="favorite-btn__text">Отложить на потом</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer class="footer">
+    <div class="footer__container">
+        <div class="group">
+            <span class="group__title">Сервис и поддержка</span>
+            <div class="group__parts">
+                <div class="group__part1">
+                    <ul class="group-links">
+                        <% for (let i = 0; i < 4; i++) { %>
+                        <li class="group-links__item">
+                            <a class="group-links__link" href="#"><%= support[i] %></a>
+                        </li>
+                        <% } %>
+                    </ul>
+                </div>
+
+                <div class="group__part2">
+                    <ul class="group-links">
+                        <% for (let i = 4; i < support.length; i++) { %>
+                        <li class="group-links__item">
+                            <a class="group-links__link" href="#"><%= support[i] %></a>
+                        </li>
+                        <% } %>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="group">
+            <span class="group__title">О компании</span>
+            <div class="group__parts">
+                <div class="group__part1">
+                    <ul class="group-links">
+                        <% for (let i = 0; i < 4; i++) { %>
+                        <li class="group-links__item">
+                            <a class="group-links__link" href="#"><%= about[i] %></a>
+                        </li>
+                        <% } %>
+                    </ul>
+                </div>
+
+                <div class="group__part2">
+                    <ul class="group-links">
+                        <% for (let i = 4; i < about.length; i++) { %>
+                        <li class="group-links__item">
+                            <a class="group-links__link" href="#"><%= about[i] %></a>
+                        </li>
+                        <% } %>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="services">
+            <ul class="services__list">
+                <% services.forEach(el => { %>
+                <li class="services__item">
+                    <a class="services__link" href="#">
+                        <div class="services__container-img">
+                            <%- include('img/icons/' + el.svg + '.svg'); %>
+                        </div>
+                        <span class="services__name"><%= el.text %></span>
+                    </a>
+                </li>
+                <% }); %>
+            </ul>
+        </div>
+
+        <div class="social">
+            <ul class="social__list">
+                <% social.forEach( el => { %>
+                <li class="social__item">
+                    <a class="social__link" href="#">
+                        <%- include('img/icons/' + el + '.svg'); %>
+                    </a>
+                </li>
+                <% }); %>
+            </ul>
+        </div>
+
+        <p class="footer__about-site">
+            2005-2017 © 7h35h0p.ru - модный интернет магазин одежды, обуви и аксессуаров.<br>
+            Все права защищены. Доставка по всей России.
+        </p>
+    </div>
+</footer>
+</body>
+</html>
