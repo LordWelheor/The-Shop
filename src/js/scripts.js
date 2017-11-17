@@ -1,26 +1,42 @@
-const productForm = document.getElementById('productForm');
-const previewImg = document.getElementById('previewImg');
+import PropertySelector from './property-selector.js';
+const Dispatcher = document.getElementById('doc');
+const productPicture = document.getElementById('productPicture');
 const colorName = document.getElementById('colorName');
+const colorList = document.getElementById('colorList');
 const sizeName = document.getElementById('sizeName');
-const size = ['S', 'M', 'L'];
-const color = [
+const sizeList = document.getElementById('sizeList');
+const price = document.getElementById('priceVal');
+const colorNames = [
     {nameEng: 'white', nameRu: 'Белый'},
     {nameEng: 'yellow', nameRu: 'Желтый'},
-    {nameEng: 'green', nameRu: 'Зеленый'}
-];
+    {nameEng: 'green', nameRu: 'Зеленый'}];
 
-productForm.addEventListener('click', function (elem) {
-    const action = elem.target.getAttribute('data-action');
+new PropertySelector(sizeList);
+new PropertySelector(colorList);
 
-    size.forEach( el => {
-        if (action === el)
-            sizeName.innerHTML = el;
-    });
+Dispatcher.addEventListener('property-selected', ev => {
+    const data = ev.detail;
 
-    color.forEach( el => {
-        if (action === el.nameEng) {
-            previewImg.src = 'img/tshirt_' + el.nameEng + '.jpg';
+    if (data.type === 'size') {
+        changeSize(data.value);
+    }
+
+    if (data.type === 'color') {
+        changeColor(data.value);
+    }
+});
+
+function changeSize(size) {
+    price.innerHTML = new Date().getSeconds() * 100;
+    sizeName.innerHTML = size;
+}
+
+function changeColor(color) {
+    productPicture.src = 'img/tshirts/tshirt_' + color + '.jpg';
+
+    colorNames.forEach( el => {
+        if (color === el.nameEng) {
             colorName.innerHTML = el.nameRu;
         }
     });
-});
+}
