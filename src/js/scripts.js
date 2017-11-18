@@ -18,20 +18,23 @@ Dispatcher.addEventListener('property-selected', ev => {
     const data = ev.detail;
 
     if (data.type === 'size') {
+        localStorage.setItem(data.type, data.value);
         changeSize(data.value);
     }
 
     if (data.type === 'color') {
+        localStorage.setItem(data.type, data.value);
         changeColor(data.value);
     }
 });
 
 function changeSize(size) {
-    price.innerHTML = new Date().getSeconds() * 100;
+    price.innerHTML = new Date().getMilliseconds() * 100;
     sizeName.innerHTML = size;
 }
 
 function changeColor(color) {
+    localStorage.setItem('color', color);
     productPicture.src = 'img/tshirts/tshirt_' + color + '.jpg';
 
     colorNames.forEach( el => {
@@ -39,4 +42,15 @@ function changeColor(color) {
             colorName.innerHTML = el.nameRu;
         }
     });
+}
+
+const lastSize = localStorage.getItem('size');
+const lastColor = localStorage.getItem('color');
+if (lastSize) {
+    document.getElementById('rad-' + lastSize).checked = true;
+    changeSize(lastSize);
+}
+if (lastColor) {
+    document.getElementById('rad-' + lastColor).checked = true;
+    changeColor(lastColor);
 }
